@@ -3,3 +3,7 @@
 
 - name: ensure oskari's public key from github
   authorized_key: user=oskari key=https://github.com/OsQu.keys
+
+- name: ensure wedding user
+  user: name=wedding
+  sudo: True

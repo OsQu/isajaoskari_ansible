@@ -1,5 +1,11 @@
 ---
 - hosts: all
+  vars:
+    app_user: "wedding"
+    app_name: "wedding"
+    app_root: "/srv/wedding"
   roles:
-    - { role: rvm_io.rvm1-ruby, tags: ruby, sudo: True, when: False }
-    - users
+#    - users
+#    - { role: rvm_io.rvm1-ruby, tags: ruby, sudo: True, when: False }
+#    - nginx
+    - wedding_app
