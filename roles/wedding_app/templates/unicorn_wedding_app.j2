@@ -21,7 +21,7 @@ APP_ROOT="{{ app_root }}"
 ENV="production"
 
 # environment settings
-CMD="cd $APP_ROOT/current && bundle exec unicorn -c config/unicorn.rb -E $ENV -D"
+CMD="cd $APP_ROOT/current && export $(cat /home/{{ app_user }}/environment_variables | xargs) && bundle exec unicorn -c config/unicorn.rb -E $ENV -D"
 PID="$APP_ROOT/shared/pids/unicorn.pid"
 OLD_PID="$PID.oldbin"
 

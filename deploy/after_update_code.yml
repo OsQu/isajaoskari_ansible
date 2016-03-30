@@ -1,3 +1,6 @@
 - name: Run bundle install
   shell: bundle install chdir={{ app_root }}
 
+- name: Compile assets
+  shell: RAILS_ENV=production bundle exec rake assets:precompile
+  when: False # At the moment there's not enough memory to compile assets :( Have to do it manually
