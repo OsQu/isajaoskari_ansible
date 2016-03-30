@@ -1,0 +1,5 @@
+- name: ensure oskari user
+  user: name=oskari shell=/bin/bash groups=admin append=yes
+
+- name: ensure oskari's public key from github
+  authorized_key: user=oskari key=https://github.com/OsQu.keys

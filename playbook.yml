@@ -1,0 +1,5 @@
+---
+- hosts: all
+  roles:
+    - { role: rvm_io.rvm1-ruby, tags: ruby, sudo: True, when: False }
+    - users
