@@ -1,11 +1,12 @@
 ---
 - hosts: all
+  become: yes
   vars:
     app_user: "wedding"
     app_name: "wedding"
     app_root: "/srv/wedding"
   roles:
-#    - users
-#    - { role: rvm_io.rvm1-ruby, tags: ruby, sudo: True, when: False }
-#    - nginx
+    - users
+    - { role: rvm_io.rvm1-ruby, tags: ruby, sudo: True, rvm1_install_flags: '--auto-dotfiles --user-install', rvm1_install_path: '/home/wedding/.rvm', rvm1_user: 'wedding', when: False }
+    - nginx
     - wedding_app

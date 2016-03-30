@@ -1,0 +1,12 @@
+---
+- hosts: all
+  become: yes
+  become_user: wedding
+  vars:
+    ansistrano_deploy_to: "/srv/wedding"
+    ansistrano_deploy_via: "git"
+    ansistrano_git_repo: "git@github.com:OsQu/isajaoskari.git"
+    ansistrano_after_update_code_tasks_file: "{{ playbook_dir }}/after_update_code.yml"
+    app_root: "/srv/wedding/current"
+  roles:
+    - carlosbuenosvinos.ansistrano-deploy

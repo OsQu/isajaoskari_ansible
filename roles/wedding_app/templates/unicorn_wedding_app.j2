@@ -21,12 +21,12 @@ APP_ROOT="{{ app_root }}"
 ENV="production"
 
 # environment settings
-CMD="cd $APP_ROOT && bundle exec unicorn -c config/unicorn.rb -E $ENV -D"
+CMD="cd $APP_ROOT/current && bundle exec unicorn -c config/unicorn.rb -E $ENV -D"
 PID="$APP_ROOT/shared/pids/unicorn.pid"
 OLD_PID="$PID.oldbin"
 
 # make sure the app exists
-cd $APP_ROOT || exit 1
+cd $APP_ROOT/current || exit 1
 
 sig () {
   test -s "$PID" && kill -$1 `cat $PID`

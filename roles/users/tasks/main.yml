@@ -5,5 +5,4 @@
   authorized_key: user=oskari key=https://github.com/OsQu.keys
 
 - name: ensure wedding user
-  user: name=wedding
-  sudo: True
+  user: name=wedding generate_ssh_key=yes ssh_key_file=.ssh/id_rsa

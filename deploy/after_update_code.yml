@@ -1,0 +1,3 @@
+- name: Run bundle install
+  shell: bundle install chdir={{ app_root }}
+

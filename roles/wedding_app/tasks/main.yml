@@ -1,4 +1,17 @@
 - name: ensure unicorn_wedding_app to /etc/init.d/
-  template: src=unicorn_wedding_app dest=/etc/init.d/unicorn_wedding_app mode=0755
+  template: src=unicorn_wedding_app.j2 dest=/etc/init.d/unicorn_wedding_app mode=0755
   sudo: yes
 
+- name: ensure /srv/wedding exists
+  file: path=/srv/wedding owner=wedding group=wedding mode=0755 state=directory
+
+- name: ensure shared folders exists
+  file: path=/srv/wedding/shared/{{ item }} owner=wedding mode=0755 state=directory
+  with_items:
+    - sockets
+    - log
+    - pids
+
+- name: ensure nginx site config
+  template: src=nginx_wedding.j2 dest=/etc/nginx/sites-enabled/wedding mode=0644
+  notify: restart nginx
