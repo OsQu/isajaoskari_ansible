@@ -57,6 +57,10 @@ case $1 in
     echo >&2 "Couldn't reload, starting '$CMD' instead"
     $CMD
     ;;
+  stop-old)
+    oldsig QUIT && echo "Stopped old unicorns" && exit 0
+    echo >&2 "Couldn't stop old unicorns"
+    ;;
   rotate)
     sig USR1 && echo rotated logs OK && exit 0
     echo >&2 "Couldn't rotate logs" && exit 1
