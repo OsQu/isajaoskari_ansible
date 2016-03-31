@@ -1,5 +1,6 @@
 - name: Run bundle install
   shell: bundle install chdir={{ app_root }}
+  when: False
 
 - name: Compile assets
   shell: RAILS_ENV=production bundle exec rake assets:precompile
